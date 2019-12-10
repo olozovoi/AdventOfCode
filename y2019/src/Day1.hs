@@ -6,5 +6,8 @@ input = "50062\n118298\n106698\n59751\n59461\n144411\n52783\n118293\n148025\n543
 countFuel :: Int -> Int
 countFuel = subtract 2 . flip quot 3
 
-solution :: Int
-solution = sum $ map (countFuel . read) $ lines input
+solution1 :: Int
+solution1 = sum $ map (countFuel . read) $ lines input
+
+solution2 :: Int
+solution2 = sum $ map (sum . takeWhile (>0) . tail . iterate countFuel . read) $ lines input
